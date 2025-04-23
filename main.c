@@ -375,6 +375,11 @@ int main(void){
     struct dir_t *dir = dir_open(volume,"\\");
     if(!dir){
         printf("Funkcja niepoprawnie otworzyła katalog główny!");
+        file_close(file);
+        fat_close(volume);
+        disk_close(disk);
+        free(filecontent);
+        return -5;
     }
     char* expected_names[12] = { "FEW.TX", "YET.TXT", "KILL.TXT", "BURN.TXT", "EVER.TXT", "WHEREIHI.BIN", "GUN", "USUAL", "CAUGHT", "FEAR", "RIDE", "MAGNETTH" };
     for (int i = 0; i < 12; ++i) {
@@ -390,6 +395,11 @@ int main(void){
             }
         }
     }
+    file_close(file);
+    dir_close(dir);
+    fat_close(volume);
+    disk_close(disk);
+    free(filecontent);
     return 0;
 }
 
