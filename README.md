@@ -1,16 +1,32 @@
-# fat16-readonly
-Prosty kod symulujący działanie FAT16 na określonym pliku.
-Projekt implementuje parser systemu plików FAT16 w trybie tylko do odczytu. Obsługiwane są funkcje inspirowane standardem POSIX, takie jak `file_open`, `file_read`, `file_seek`, `file_close`, `dir_open`, `dir_read` i `dir_close`.
+# FAT16 File System Parser (Read-Only)
 
-## Możliwości
+A low-level C implementation of a FAT16 file system parser. This project provides a POSIX-like API to interact with virtual disk images, bypassing standard OS file handling to interact directly with the file system structures.
 
-Kod pozwala na:
-1. Otwieranie, czytanie i zamykanie urządzenia blokowego (w formie pliku).
-2. Otwieranie i zamykanie woluminu FAT16.
-3. Otwieranie, przeszukiwanie, czytanie oraz zamykanie plików w systemie FAT.
-4. Otwieranie, czytanie i zamykanie katalogów.
+Ideal for learning about:
+* **Disk Layout:** Boot sectors, FAT tables, and data regions.
+* **Manual Memory Mapping:** Calculating physical offsets from logical cluster addresses.
+* **Embedded Systems Logic:** Working with fixed-size structures and little-endian data.
 
-## Uruchomienie
+## ✨ Key Features
 
-Kod można uruchomić w dowolnym IDE wspierającym język C. Potrzebny jest określony plik, który w swojej zawartości symuluje strukture FAT (jeden jest już dołączony wystarczy pobrać repozytorium).
-W funkcji main() zawarty jest już przykładowy kod, który testuje wszystkie funkcje.
+* **Custom Block Device Layer:** Abstracts raw disk image access.
+* **POSIX-inspired API:** Includes `file_open`, `file_read`, `file_seek`, and `file_close`.
+* **Directory Traversal:** Functions for opening and listing directory contents (`dir_open`, `dir_read`).
+* **Robust Offset Calculation:** Handles Cluster-to-LBA (Logical Block Address) mapping.
+
+## 🛠 Technical Highlights
+
+* **Endianness Management:** Ensures data is correctly interpreted from binary disk images.
+* **Zero-Dependency:** Written in pure C using only standard headers.
+* **Resource Management:** Carefully handles file handles and volume pointers to prevent memory leaks.
+
+## 💻 Getting Started
+
+### Prerequisites
+* A C compiler (GCC, Clang, or MSVC).
+* A FAT16 formatted disk image (a sample image is usually included in the repository).
+
+### Building
+You can compile the project using the provided `Makefile`:
+```bash
+make
