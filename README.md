@@ -30,3 +30,9 @@ Ideal for learning about:
 You can compile the project using the provided `Makefile`:
 ```bash
 make
+```
+
+Clean build artifacts:
+```bash
+make clean
+```
