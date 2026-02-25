@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -std=c11 -g
 # Target executable name
 TARGET = fat16_parser
 
-# Source files (dostosuj nazwy plików jeśli masz inne)
+# Source files
 SRCS = main.c
 
 # Object files
